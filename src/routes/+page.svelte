@@ -2,6 +2,7 @@
 	import { loggedUser, pb } from '../lib/auth';
 	import { onMount } from 'svelte';
 	import type { ListOfMessages, Message } from '../models/messages';
+	import MessageComp from './MessageComp.svelte';
 
 	let resultList: ListOfMessages;
 	export let messages: Message[] = [];
@@ -24,7 +25,7 @@
 {#if $loggedUser}
 	<h1>Welcome to Twitter_Clon</h1>
 	{#each messages as message}
-		<div>{message.message}</div>
+		<MessageComp mensaje={message} />
 	{/each}
 {:else}
 	<!--<meta http-equiv='refresh' content='0; URL=/login'>-->

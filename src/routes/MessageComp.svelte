@@ -100,10 +100,10 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid white;
 	}
 	.messageContainer:first-of-type {
-		border-top: 1px solid black;
+		border-top: 1px solid white;
 	}
 
 	.likeCounter {
@@ -124,6 +124,7 @@
 	.likebutton {
 		border: none;
 		background-color: transparent;
+		filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(236deg) brightness(104%) contrast(101%);
 	}
 
 	.textInMessage {

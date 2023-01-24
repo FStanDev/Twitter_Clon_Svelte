@@ -28,6 +28,11 @@
 		<MessageComp mensaje={message} />
 	{/each}
 {:else}
-	<!--<meta http-equiv='refresh' content='0; URL=/login'>-->
 	<a href="/login">Log in</a>
 {/if}
+
+<style>
+	h1{
+	text-align: center;
+	}
+</style>

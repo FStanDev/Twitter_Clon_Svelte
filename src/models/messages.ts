@@ -17,4 +17,5 @@ export interface Message {
 	likes: number;
 	message: string;
 	updated: string;
+	username: string;
 }

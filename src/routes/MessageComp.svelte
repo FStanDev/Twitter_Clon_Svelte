@@ -1,18 +1,21 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import type { null_to_empty } from 'svelte/internal';
 	import { pb } from '../lib/auth';
 	import type { Message } from '../models/messages';
 
 	export let mensaje: Message;
 	let username: Object;
 
-	onMount(async () => {
-		await pb
-			.collection('users')
-			.getOne(mensaje.createdby)
-			.then((data) => (username = data.username))
-			.catch((error) => alert(error));
-	});
+	async function get_username() {
+		if (username === null) {
+			await pb
+				.collection('users')
+				.getOne(mensaje.createdby)
+				.then((data) => (username = data.username))
+				.catch((error) => alert(error));
+		}
+	}
 
 	async function like() {
 		const data = {
@@ -36,7 +39,7 @@
 
 <div class="messageContainer">
 	<div class="textInMessage">{mensaje.message}</div>
-	<div class="textInMessage">{username}</div>
+	<div class="textInMessage">{mensaje.username}</div>
 	<div class="likeCounter">
 		<div class="likeContainer">
 			<button on:click={() => like()} class="likebutton"
